@@ -1,0 +1,20 @@
+{
+  "name": "you-tongue",
+  "productName": "YouTongue",
+  "version": "1.0.0",
+  "description": "translate youtube videos",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kishoreadhith-v/you-tongue.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kishoreadhith-v/you-tongue/issues"
+  },
+  "homepage": "https://github.com/kishoreadhith-v/you-tongue#readme"
+}

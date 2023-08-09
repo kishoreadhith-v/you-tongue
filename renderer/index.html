@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self'" />
+    <link rel="stylesheet" href="styles.css" />
+    <title>YouTube URL Input</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Enter a YouTube URL</h1>
+      <form id="youtube-form">
+        <label for="url">YouTube URL:</label>
+        <input
+          type="url"
+          id="url"
+          name="url"
+          placeholder="https://www.youtube.com/watch?v=..."
+        />
+        <button type="submit">Submit</button>
+      </form>
+      <div class="video-info">
+        <h2>Video Info</h2>
+        <ul>
+          <li><strong>Title:</strong> <span id="video-title"></span></li>
+          <li><strong>Views:</strong> <span id="video-views"></span></li>
+        </ul>
+      </div>
+    </div>
+    <script src="./js/renderer.js"></script>
+  </body>
+</html>
