@@ -24,6 +24,7 @@ async function videoInfo(url) {
 
     const videoInfo = {
       title: info.videoDetails.title,
+      author: info.videoDetails.author.name,
       views: info.videoDetails.viewCount,
     };
 

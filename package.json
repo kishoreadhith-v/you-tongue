@@ -2,6 +2,12 @@
   "name": "you-tongue",
   "productName": "YouTongue",
   "version": "1.0.0",
+  "dependencies": {
+    "electron": "^25.4.0",
+    "ffmpeg": "^0.0.4",
+    "whisper-node": "^0.2.12",
+    "ytdl-core": "^4.11.5"
+  },
   "description": "translate youtube videos",
   "main": "main.js",
   "scripts": {
