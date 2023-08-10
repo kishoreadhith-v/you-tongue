@@ -1,7 +1,8 @@
-const { app, BrowserWindow, Menu, ipcMain } = require("electron");
+const { app, BrowserWindow, Menu, ipcMain, shell } = require("electron");
 const path = require("path");
 
 const { downloadVideo, videoInfo } = require("./downloader.js");
+const { url } = require("inspector");
 
 const isDev = process.env.NODE_ENV !== "production";
 const isMac = process.platform === "darwin";
@@ -14,7 +15,7 @@ let mainWindow;
 function createMainWindow() {
   try {
     mainWindow = new BrowserWindow({
-      width: 800,
+      width: isDev ? 1200: 800,
       height: 600,
       webPreferences: {
         nodeIntegration: false,
@@ -37,9 +38,26 @@ function createMainWindow() {
     mainWindow.on("closed", () => {
       mainWindow = null;
     });
-
-    return mainWindow;
   } catch (error) {
+    console.error(error);
+  }
+}
+
+function createPlayerWindow(url) {
+  try {
+    playerWindow = new BrowserWindow({
+      width: 1920,
+      height: 1080,
+      webPreferences: {
+        nodeIntegration: false,
+        contextIsolation: true,
+        preload: path.join(__dirname, "preload.js"),
+  }});
+      playerWindow.loadURL(url);
+    // shell.openExternal(url);
+  }
+
+   catch (error) {
     console.error(error);
   }
 }
@@ -53,6 +71,11 @@ ipcMain.on("url", async (event, url) => {
     console.error("Error processing video info:", error);
   }
 });
+
+ipcMain.on('play-video', (event, url) => {
+  console.log('Playing video:', url);
+  createPlayerWindow(url);
+})
 
 // app is ready
 
